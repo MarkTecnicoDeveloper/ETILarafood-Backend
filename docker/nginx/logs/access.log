@@ -1,2 +1,5 @@
 172.21.0.1 - - [27/Aug/2023:15:33:04 +0000] "GET / HTTP/1.1" 200 27543 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
 172.21.0.1 - - [27/Aug/2023:15:33:04 +0000] "GET /favicon.ico HTTP/1.1" 200 0 "http://localhost:8080/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+172.22.0.1 - - [27/Aug/2023:15:53:30 +0000] "GET / HTTP/1.1" 200 27543 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+172.22.0.1 - - [27/Aug/2023:15:53:39 +0000] "GET /admin/plans HTTP/1.1" 200 22 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+172.22.0.1 - - [27/Aug/2023:15:54:41 +0000] "GET /admin/plans HTTP/1.1" 200 53 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
