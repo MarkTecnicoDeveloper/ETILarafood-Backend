@@ -1,0 +1,64 @@
+version: '3.7'
+
+services:
+    # Project
+    app:
+        build: 
+            context: .
+            dockerfile: Dockerfile
+        container_name: app
+        restart: unless-stopped
+        tty: true
+        working_dir: /var/www
+        volumes:
+            - ./:/var/www
+            - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+        depends_on:
+            - redis
+        networks:
+            - larafood
+
+    # Webserver
+    webserver:
+        container_name: webserver
+        image: nginx:alpine
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "8080:80"
+        volumes:
+            - ./:/var/www
+            - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+            - ./docker/nginx/logs/:/var/log/nginx
+        networks:
+            - larafood
+    
+    # Database
+    db:
+        container_name: db
+        image: mysql:5.7.22
+        restart: unless-stopped
+        tty: true
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_USER: ${DB_USERNAME}
+        volumes:
+            - ./.docker/mysql/dbdata:/var/lib/mysql
+            - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
+        ports:
+            - "3306:3306"
+        networks:
+            - larafood
+
+    # Redis
+    redis:
+        container_name: redis
+        image: redis:latest
+        networks:
+            - larafood
+
+networks:
+    larafood:
+        driver: bridge
